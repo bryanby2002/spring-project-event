@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <title>Inicio</title>
+</head>
+
+<body class="bg-dark ">
+
+  <!--Nav-->
+  <nav style="background-color: #6F2CF4;" class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white " th:href="@{/inicio}">Eventos </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end " id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class=" text-white nav-link link active " aria-current="page" th:href="@{/inicio}">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white " th:href="@{/nosotros}">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" th:href="@{/servicios}">Servicios</a>
+          </li>
+          <li class="nav-item">
+            <a th:href="@{/loginForm}" class=" text-white nav-item  nav-link" >Iniciar sesión</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!--Portada-->
+  <div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img th:src="@{/imgs/portada.jpg}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="fs-1">Bodas</h5>
+          <p>Imagina un escenario idílico donde el romance cobra vida y cada detalle está meticulosamente diseñado para reflejar la esencia única de tu amor. En LocalNice, nos enorgullece ser artífices de momentos inolvidables, y nuestras bodas son mucho más que eventos; son experiencias extraordinarias.
+          </p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img th:src="@{/imgs/portada1.jpg}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="fs-1">Cumpleaños</h5>
+          <p>Creemos que cada cumpleaños merece ser una celebración inolvidable. Ya sea un hito importante o simplemente otro año lleno de alegría, nos dedicamos a hacer de tu cumpleaños un día especial y lleno de momentos memorables.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img th:src="@{/imgs/portada2.jpg}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="fs-1">Privados</h5>
+          <p>Entendemos que la elegancia y la privacidad son fundamentales al planificar eventos exclusivos. Nuestra misión es llevar tus eventos privados al siguiente nivel, creando experiencias inolvidables en entornos íntimos y sofisticados.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!--servicio-->
+  <div class="container-fluid mt-3">
+    <div class="row d-flex justify-content-center align-items-center flex-wrap ">
+      <div class="col d-flex flex-column justify-content-center align-items-center ">
+        <p class="fs-1 text-white ">Servicio</p>
+        <a style="background-color: #6F2CF4;" th:href="@{/servicios}" class="btn text-white">Mas informacion</a>
+      </div>
+      <div class="col">
+        <div style="width: 100%;" class="img">
+          <img style="width: 100%;" th:src="@{/imgs/servicio.jpg}">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--pie de pagina-->
+  <div style="background-color: #2B3035;" class="container-fluid mt-3">
+    <div class="row d-flex justify-content-center align-items-center p-5 text-white ">
+      <div class="col">
+        <p>Av los rosales</p>
+        <p>224 Lima</p>
+        <p>Perú</p>
+      </div>
+      <div class="col">
+        <p>Tel.: 914-123-456</p>
+        <p>Fax: 914-123-456</p>
+        <p>elp@elp.edu.pe</p>
+      </div>
+      <div class="col">
+        <p>© 2035 Creado por</p>
+        <p>LocalNice</p>
+        <p>elp.com</p>
+      </div>
+      <div class="col">
+        <a style="background-color: #6F2CF4;" class="btn text-white " th:href="@{/servicios}">Reservar una reunion</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!--Script bootstrap-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

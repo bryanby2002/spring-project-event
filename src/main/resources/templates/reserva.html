@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <link href="vendor/select2/dist/css/select2.min.css" rel="stylesheet" />
+  <title>Registro</title>
+</head>
+
+<body class="bg-dark">
+
+  <!--Nav-->
+  <nav style="background-color: #6F2CF4;" class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white " th:href="@{/inicio}">Eventos </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link text-white" aria-current="page" th:href="@{/inicio}">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" th:href="@{/nosotros}">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" th:href="@{/servicios}">Servicios</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <br>
+
+  <!--Mensaje-->
+
+  <!--formulario registro-->
+  <div class="container mt-3">
+    <div class="row justify-content-center ">
+      <div class="col col-md-4 border rounded bg-dark text-white  p-4">
+        <p class="fs-3 text-center text-white ">Reserva</p>
+        <form th:action="@{/api/evento/reservar}" th:object="${reserva}" method="post">
+          <div class="mb-3">
+            <label class="form-text text-white">Dni</label>
+            <input class="form-control bg-dark text-white" th:value="${dni}"  type="text" name="dni" >
+          </div>
+          <div class="mb-3">
+            <label class="form-text text-white">Seleccione el evento:</label>
+            <select class="form-select bg-dark text-white " th:field="*{evento}">
+              <option th:each="evento : ${eventos}"
+                      th:value="${evento.idEvento}"
+                      th:text="${evento.nombre}">
+              </option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-text ">Fecha</label>
+            <input class="form-control bg-dark text-white " th:field="*{fecha}" type="date" name="fecha" id="">
+          </div>
+          <div class="mb-3">
+            <input style="background-color: #6F2CF4;" class="btn text-white  w-100 " type="submit" value="Reservar">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <!--pie de pagina-->
+  <div style="background-color: #2B3035;" class="container-fluid mt-3">
+    <div class="row d-flex justify-content-center align-items-center p-5 text-white ">
+      <div class="col">
+        <p>Av los rosales</p>
+        <p>224 Lima</p>
+        <p>Perú</p>
+      </div>
+      <div class="col">
+        <p>Tel.: 914-123-456</p>
+        <p>Fax: 914-123-456</p>
+        <p>elp@elp.edu.pe</p>
+      </div>
+      <div class="col">
+        <p>© 2035 Creado por</p>
+        <p>LocalNice</p>
+        <p>elp.com</p>
+      </div>
+      <div class="col">
+        <a style="background-color: #6F2CF4;" class="btn text-white " th:href="@{/servicios}">Reservar una reunion</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!--Script bootstrap-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/select2/dist/js/select2.min.js"></script>
+</body>
+
+</html>

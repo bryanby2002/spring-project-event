@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <title>Registro</title>
+</head>
+
+<body class="bg-dark">
+
+  <!--Nav-->
+  <nav style="background-color: #6F2CF4;" class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white " th:href="@{/inicio}">Eventos </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link text-white" aria-current="page" th:href="@{/inicio}">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" th:href="@{/nosotros}">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" th:href="@{/servicios}">Servicios</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <br>
+
+  <!--Mensaje-->
+
+  <!--formulario registro-->
+  <div class="container mt-3">
+    <div class="row justify-content-center ">
+      <div class="col col-md-6 border rounded bg-dark text-white  p-4">
+        <p class="fs-3 text-center text-white ">Registro</p>
+        <form th:action="@{/api/usuario/guardar}"  th:object="${usuario}" method="post">
+          <div class="mb-3">
+            <label class="form-text text-white" >Nombre</label>
+            <input th:field="*{nombre}" class="form-control bg-dark text-white " type="text" name="nombre"  required>
+          </div>
+          <div class="mb-3">
+            <label class="form-text text-white" >Apellido paterno</label>
+            <input th:field="*{apellidoPaterno}" class="form-control bg-dark text-white " type="text" name="apellidoP" required >
+          </div>
+          <div class="mb-3">
+            <label class="form-text text-white" >Apellido materno</label>
+            <input th:field="*{apellidoMaterno}" class="form-control bg-dark text-white " type="text" name="apellidoM" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-text text-white" >Dni</label>
+            <input th:field="*{dni}" class="form-control bg-dark text-white " type="text" name="dni" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-text text-white" >Telefono</label>
+            <input th:field="*{telefono}" class="form-control bg-dark text-white " type="tel" name="telefono" required >
+          </div>
+          <div class="mb-3">
+            <label class="form-text text-white" >Correo</label>
+            <input th:field="*{correo}" class="form-control bg-dark text-white " type="email" name="correo" required >
+          </div>
+          <div class="mb-3">
+            <label class="form-text text-white" >Contraseña</label>
+            <input th:field="*{contrasena}" class="form-control bg-dark text-white " type="password" name="contrasena" required>
+          </div>
+          <div class="mb-3">
+            <input style="background-color: #6F2CF4;" class="btn text-white " type="submit" value="Registrarme">
+          </div>
+          <p>¿Ya tiene cuenta? <span><a class="text-decoration-none" th:href="@{/loginForm}">Inicia sesión aqui</a></span></p>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <!--pie de pagina-->
+  <div style="background-color: #2B3035;" class="container-fluid mt-3">
+    <div class="row d-flex justify-content-center align-items-center p-5 text-white ">
+      <div class="col">
+        <p>Av los rosales</p>
+        <p>224 Lima</p>
+        <p>Perú</p>
+      </div>
+      <div class="col">
+        <p>Tel.: 914-123-456</p>
+        <p>Fax: 914-123-456</p>
+        <p>elp@elp.edu.pe</p>
+      </div>
+      <div class="col">
+        <p>© 2035 Creado por</p>
+        <p>LocalNice</p>
+        <p>elp.com</p>
+      </div>
+      <div class="col">
+        <a style="background-color: #6F2CF4;" class="btn text-white " th:href="@{/servicios}">Reservar una reunion</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!--Script bootstrap-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
