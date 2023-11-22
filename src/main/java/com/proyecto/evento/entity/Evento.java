@@ -18,6 +18,7 @@ public class Evento {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer idEvento;
   private String nombre;
+  @Column(length = 10000)
   private String descripcion;
   private Date fecha;
   private LocalTime horaInicio;

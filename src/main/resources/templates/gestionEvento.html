@@ -67,7 +67,7 @@
             <td th:text="${evento.tipo}">Privada</td>
             <td th:text="${evento.fecha}">2023-12-19</td>
             <td>
-              <a class="btn btn-success " href="">Actualizar</a>
+              <a class="btn btn-success " th:href="@{/api/evento/actualizar/{id}(id=${evento.idEvento})}">Actualizar</a>
               <a th:href="@{/api/evento/eliminar/{id}(id=${evento.idEvento})}" class="btn btn-danger" href="">Eliminar</a>
             </td>
           </tr>

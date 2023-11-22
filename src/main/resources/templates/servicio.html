@@ -48,7 +48,7 @@
     <div th:each="evento : ${eventos}" class="row">
       <div class="col">
         <div  class="card border bg-dark text-white " style="width: 25rem;">
-          <img th:src="@{/carga/{imgName}(imgName=${evento.srcImg})}" class="card-img-top" alt="not fount">
+          <img th:src="@{/carga/{img}(img=${evento.srcImg})}" class="card-img-top" alt="not found">
           <div class="card-body">
             <h5 th:text="${evento.nombre}" class="card-title">Bodas</h5>
             <p th:text="${evento.descripcion}" class="card-text">Some quick example text to build on the card title and

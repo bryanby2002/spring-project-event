@@ -1,6 +1,7 @@
 package com.proyecto.evento.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import com.proyecto.evento.entity.Evento;
@@ -27,6 +28,16 @@ public class EventoServiceImpl  implements EventoService{
   @Override
   public void eliminar(Integer id) {
     this.eventoRepository.deleteById(id);
+  }
+
+  @Override
+  public Evento getById(Integer id) {
+    return eventoRepository.findById(id).get();
+  }
+
+  @Override
+  public Evento actualizar(Evento evento) {
+    return eventoRepository.save(evento);
   }
   
 }

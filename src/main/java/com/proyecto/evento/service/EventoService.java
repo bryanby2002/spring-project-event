@@ -10,4 +10,6 @@ public interface EventoService {
   Evento guardar(Evento evento);
   List<Evento> listar();
   void eliminar(Integer id);
+  Evento getById(Integer id);
+  Evento actualizar(Evento evento);
 }

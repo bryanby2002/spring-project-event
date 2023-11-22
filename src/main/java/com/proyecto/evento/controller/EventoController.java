@@ -15,9 +15,11 @@ import com.proyecto.evento.service.UsuarioServiceImpl;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/api/evento")
@@ -28,42 +30,39 @@ public class EventoController {
   private final ReservaService reservaService;
   private final UsuarioServiceImpl usuarioServiceImpl;
 
-  public EventoController
-  (
-    EventoServiceImpl eventoServiceImpl,
-    CargaService cargaService,
-    ReservaService reservaService,
-    UsuarioServiceImpl usuarioServiceImpl
-  )
-  {
+  public EventoController(
+      EventoServiceImpl eventoServiceImpl,
+      CargaService cargaService,
+      ReservaService reservaService,
+      UsuarioServiceImpl usuarioServiceImpl) {
 
-    this.eventoServiceImpl=eventoServiceImpl;
-    this.cargaService=cargaService;
-    this.reservaService=reservaService;
-    this.usuarioServiceImpl=usuarioServiceImpl;
+    this.eventoServiceImpl = eventoServiceImpl;
+    this.cargaService = cargaService;
+    this.reservaService = reservaService;
+    this.usuarioServiceImpl = usuarioServiceImpl;
 
   }
 
   @GetMapping("/gestion-evento")
-  public String gestionEvento(Model model){
+  public String gestionEvento(Model model) {
     model.addAttribute("eventos", eventoServiceImpl.listar());
     return "gestionEvento";
   }
 
   @GetMapping("/reservaMensaje")
-  public String reservaMensaje(){
+  public String reservaMensaje() {
     return "reservaMensaje";
   }
 
   @GetMapping("/reservaForm")
-  public String reservaForm(Model model){
+  public String reservaForm(Model model) {
     model.addAttribute("eventos", eventoServiceImpl.listar());
     model.addAttribute("reserva", new Reserva());
     return "reserva";
   }
 
   @PostMapping("/reservar")
-  public String reservar(@ModelAttribute Reserva reserva, @RequestParam("dni") String dni){
+  public String reservar(@ModelAttribute Reserva reserva, @RequestParam("dni") String dni) {
     Usuario usuario = usuarioServiceImpl.listarPorDni(dni);
     reserva.setUsuario(usuario);
     reservaService.guardar(reserva);
@@ -71,17 +70,17 @@ public class EventoController {
   }
 
   @GetMapping("/registroForm")
-  public String formularioRegistroEvento(Model model){
+  public String formularioRegistroEvento(Model model) {
     model.addAttribute("evento", new Evento());
     return "nuevoEvento";
   }
 
   @PostMapping("/registro")
   public String registrarNuevoEvento(@ModelAttribute("evento") Evento evento,
-                                     @RequestParam("file") MultipartFile file,
-                                     Model model){
+      @RequestParam("file") MultipartFile file,
+      Model model) {
     try {
-      //fechaActual
+      // fechaActual
       LocalDate date = LocalDate.now();
       Date fechaActual = Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant());
       String fileName = file.getOriginalFilename();
@@ -90,22 +89,48 @@ public class EventoController {
       evento.setEstado(1);
       cargaService.cargarImagen(file);
       eventoServiceImpl.guardar(evento);
-      model.addAttribute("mensaje", "Registrado correctamente");
-      model.addAttribute("evento", new Evento());
-    }catch (IOException e){
-      model.addAttribute("error", "Error al cargar la imagen");
+    } catch (IOException e) {
       e.printStackTrace(System.out);
     }
-    return "redirect:/servicios";
+    return "redirect:/api/evento/gestion-evento";
   }
 
   @GetMapping("/eliminar/{id}")
-  public String eliminarEvento(@PathVariable("id") Integer id){
+  public String eliminarEvento(@PathVariable("id") Integer id) {
     try {
       eventoServiceImpl.eliminar(id);
     } catch (Exception e) {
       e.printStackTrace(System.out);
     }
     return "redirect:/api/evento/gestion-evento";
+  }
+
+  @GetMapping("/actualizar/{id}")
+  public String actualizarEventoForm(@PathVariable("id") Integer id, Model model) {
+    model.addAttribute("evento", eventoServiceImpl.getById(id));
+    return "editarEvento";
+  }
+
+  @PostMapping("/actualizar-evento/{id}")
+  public String actulizarEvento(@ModelAttribute Evento evento,
+      @PathVariable("id") Integer id,
+      @RequestParam("file") MultipartFile file) {
+    Evento eventoId = eventoServiceImpl.getById(id);
+    if (eventoId != null) {
+      try {
+        evento.setIdEvento(id);
+        LocalDate date = LocalDate.now();
+        Date fechaActual = Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        String fileName = file.getOriginalFilename();
+        evento.setFecha(fechaActual);
+        evento.setSrcImg(fileName);
+        cargaService.update(fileName, file);
+        eventoServiceImpl.guardar(evento);
+        return "redirect:/api/evento/gestion-evento";
+      } catch (Exception e) {
+        e.printStackTrace(System.out);
+      }
+    }
+    return "editarEvento";
   }
 }

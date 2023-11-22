@@ -24,5 +24,14 @@ public class CargaService {
                     StandardCopyOption.REPLACE_EXISTING);
         }
     }
+    
+    public void update(String fileName, MultipartFile file) throws IOException {
+        if (!file.isEmpty()) {
+            Path pathFile = Paths.get(UPLOAD_DIR,fileName);
+            if(Files.exists(pathFile)){
+                Files.copy(file.getInputStream(), pathFile, StandardCopyOption.REPLACE_EXISTING);
+            }
+        }
+    }
 
 }
