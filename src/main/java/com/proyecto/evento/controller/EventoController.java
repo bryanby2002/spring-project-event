@@ -2,8 +2,10 @@ package com.proyecto.evento.controller;
 
 import com.proyecto.evento.entity.Evento;
 import com.proyecto.evento.entity.Reserva;
+import com.proyecto.evento.entity.ReservaDTO;
 import com.proyecto.evento.entity.Usuario;
 import com.proyecto.evento.service.CargaService;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,11 +17,10 @@ import com.proyecto.evento.service.UsuarioServiceImpl;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.Optional;
+import java.util.List;
 
 @Controller
 @RequestMapping("/api/evento")
@@ -116,12 +117,12 @@ public class EventoController {
       @PathVariable("id") Integer id,
       @RequestParam("file") MultipartFile file) {
     Evento eventoId = eventoServiceImpl.getById(id);
-    if (eventoId != null) {
+    String fileName = eventoId.getSrcImg();
+    if (fileName != null) {
       try {
         evento.setIdEvento(id);
         LocalDate date = LocalDate.now();
         Date fechaActual = Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant());
-        String fileName = file.getOriginalFilename();
         evento.setFecha(fechaActual);
         evento.setSrcImg(fileName);
         cargaService.update(fileName, file);
@@ -132,5 +133,13 @@ public class EventoController {
       }
     }
     return "editarEvento";
+  }
+  
+  
+  @GetMapping("/reportes")
+  public String reportes(Model model){
+    List<ReservaDTO> reservaDTOs = reservaService.getListReservas();
+    model.addAttribute("reservas", reservaDTOs);
+    return "reporte";
   }
 }

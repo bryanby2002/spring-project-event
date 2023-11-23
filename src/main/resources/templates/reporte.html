@@ -40,39 +40,33 @@
 </nav>
 
 <div class="container mt-3">
-  <p class="fs-1">Gestionar eventos</p>
+  <p class="fs-1">Reservas de usuarios</p>
 </div>
 
 <!--contenido-->
 <div class="container mt-3">
   <div class="row">
     <div class="col">
-      <a class="btn btn-warning  m-2" th:href="@{/api/evento/registroForm}">Nuevo evento</a>
       <a class="btn btn-success   m-2" th:href="@{/api/usuario/direccionador}">Menu administrador</a>
       <table class="table table-dark table-hover ">
         <thead>
           <tr class="text-white ">
-            <th>id</th>
-            <th>nombre</th>
-            <th>lugar</th>
-            <th>precio</th>
-            <th>tipo</th>
+            <th>Id</th>
+            <th>Usuario</th>
+            <th>Correo</th>
+            <th>Telefono</th>
+            <th>Evento</th>
             <th>fecha</th>
-            <th>acciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr th:each="evento : ${eventos}">
-            <td th:text="${evento.idEvento}">1</td>
-            <td th:text="${evento.nombre}">Evento privada</td>
-            <td th:text="${evento.lugar}">Av Miraflores</td>
-            <td th:text="${evento.precio}">200 soles</td>
-            <td th:text="${evento.tipo}">Privada</td>
-            <td th:text="${evento.fecha}">2023-12-19</td>
-            <td>
-              <a class="btn btn-success " th:href="@{/api/evento/actualizar/{id}(id=${evento.idEvento})}">Actualizar</a>
-              <a th:href="@{/api/evento/eliminar/{id}(id=${evento.idEvento})}" class="btn btn-danger" href="">Eliminar</a>
-            </td>
+          <tr th:each="reserva : ${reservas}">
+            <td th:text="${reserva.idReserva}">1</td>
+            <td th:text="${reserva.nombreUsuario}">1</td>
+            <td th:text="${reserva.correoUsuario}">Evento privada</td>
+            <td th:text="${reserva.telefonoUsuario}">Evento privada</td>
+            <td th:text="${reserva.nombreEvento}">Av Miraflores</td>
+            <td th:text="${reserva.fechaReserva}">2023-12-19</td>
           </tr>
         </tbody>
       </table>

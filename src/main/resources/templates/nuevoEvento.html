@@ -5,15 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/style.css">
   <title>Evento nuevo</title>
 </head>
-<body class="bg-dark ">
+<body style="font-family: 'Roboto', sans-serif;" class="bg-body-tertiary  ">
 
   <!--Nav-->
-  <nav style="background-color: #6F2CF4;" class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary ">
     <div class="container-fluid">
-      <a class="navbar-brand text-white " th:href="@{/inicio}">Eventos </a>
+      <a class="navbar-brand text-warning fs-5   " th:href="@{/inicio}">Eventos </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -21,13 +22,13 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link text-white " aria-current="page" th:href="@{/inicio}">Inicio</a>
+            <a class="nav-link text-warning fs-5   " aria-current="page" th:href="@{/inicio}">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white " th:href="@{/nosotros}">Nosotros</a>
+            <a class="nav-link text-warning fs-5   " th:href="@{/nosotros}">Nosotros</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white " th:href="@{/servicios}">Servicios</a>
+            <a class="nav-link text-warning fs-5  " th:href="@{/servicios}">Servicios</a>
           </li>
         </ul>
       </div>
@@ -39,6 +40,7 @@
   <!--form nuevo evento-->
   <div class="container mt-3">
     <div class="row justify-content-center ">
+      <a class="btn btn-success col-md-6   m-2" th:href="@{/api/usuario/direccionador}">Atras</a>
       <div class="col col-md-6 border rounded  p-3 bg-dark text-white ">
         <p class="fs-3 text-center text-white ">Nuevo evento</p>
         <form th:action="@{/api/evento/registro}"  th:object="${evento}" method="post" enctype="multipart/form-data">
@@ -87,15 +89,15 @@
             <label class="form-text text-white " for="">Seleccione una imagen</label>
             <input class="form-control bg-dark text-white" type="file" name="file">
           </div>
-          <input style="background-color: #6F2CF4;" class="btn text-white " type="submit" value="Registrar">
+          <input class="btn btn-warning " type="submit" value="Registrar">
         </form>
       </div>
     </div>
   </div>
 
   <!--pie de pagina-->
-  <div style="background-color: #2B3035;" class="container-fluid mt-3">
-    <div class="row d-flex justify-content-center align-items-center p-5 text-white ">
+  <div class="container-fluid mt-3 bg-warning-subtle fw-bold ">
+    <div class="row d-flex justify-content-center align-items-center bg-warning  p-5 ">
       <div class="col">
         <p>Av los rosales</p>
         <p>224 Lima</p>
@@ -112,7 +114,7 @@
         <p>elp.com</p>
       </div>
       <div class="col">
-        <a style="background-color: #6F2CF4;" class="btn text-white " th:href="@{/servicios}">Reservar una reunion</a>
+        <a class="btn btn-dark " th:href="@{/servicios}">Reservar una reunion</a>
       </div>
     </div>
   </div>

@@ -5,33 +5,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/style.css">
   <title>Servicio</title>
 </head>
 
-<body class="bg-dark">
+<body style="font-family: 'Roboto', sans-serif;" class="bg-white " >
 
   <!--Nav-->
-  <nav style="background-color: #6F2CF4;" class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg bg-white">
     <div class="container-fluid">
-      <a class="navbar-brand text-white " th:href="@{/inicio}">Eventos </a>
+      <a style="color: #F39C12 ;" class="navbar-brand fs-5 " th:href="@{/inicio}">Eventos </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+      <div class="collapse navbar-collapse justify-content-end  " id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link text-white" aria-current="page" th:href="@{/inicio}">Inicio</a>
+            <a style="color: #F39C12 ;" class="nav-link  fs-5" aria-current="page" th:href="@{/inicio}">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" th:href="@{/nosotros}">Nosotros</a>
+            <a style="color: #F39C12 ;" class="nav-link  fs-5" th:href="@{/nosotros}">Nosotros</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active text-white" th:href="@{/servicios}">Servicios</a>
+            <a style="color: #F39C12 ;" class="nav-link active  fs-5" th:href="@{/servicios}">Servicios</a>
           </li>
           <li class="nav-item">
-            <a th:href="@{/loginForm}" class=" nav-item text-white  nav-link" >Iniciar sesión</a>
+            <a style="color: #F39C12 ;" th:href="@{/loginForm}" class="nav-link  fs-5 " >Iniciar sesión</a>
           </li>
         </ul>
       </div>
@@ -40,15 +41,15 @@
 
   <!--Titulo-->
   <div class="container-fluid ">
-    <p class="fs-1 ml-3 text-white "> Eventos disponibles</p>
+    <p class="fs-2 ml-3 "> Eventos disponibles</p>
   </div>
 
   <!--servicios-->
   <div class="container-fluid  mt-3 d-flex gap-2 flex-wrap justify-content-start">
     <div th:each="evento : ${eventos}" class="row">
       <div class="col">
-        <div  class="card border bg-dark text-white " style="width: 25rem;">
-          <img th:src="@{/carga/{img}(img=${evento.srcImg})}" class="card-img-top" alt="not found">
+        <div  class="card border bg-dark text-white p-1 " style="width: 25rem;">
+          <img th:src="@{/carga/{img}(img=${evento.srcImg})}" class="card-img-top " alt="not found">
           <div class="card-body">
             <h5 th:text="${evento.nombre}" class="card-title">Bodas</h5>
             <p th:text="${evento.descripcion}" class="card-text">Some quick example text to build on the card title and
@@ -58,7 +59,7 @@
             <p th:text="${evento.lugar}"></p>
             <span class="fw-bold ">Precio en soles:</span>
             <p th:text="${evento.precio}"></p>  
-            <a style="background-color: #6F2CF4;"  th:href="@{/api/evento/reservaForm}" class="btn text-white ">Reservar</a>
+            <a th:href="@{/api/evento/reservaForm}" class="btn text-dark  btn-warning fw-bold">Reservar</a>
           </div>
         </div>
       </div>
@@ -66,8 +67,8 @@
   </div>
 
   <!--pie de pagina-->
-  <div style="background-color: #2B3035;" class="container-fluid mt-3">
-    <div class="row d-flex justify-content-center align-items-center p-5 text-white ">
+  <div class="container-fluid mt-3 bg-warning-subtle fw-bold ">
+    <div class="row d-flex justify-content-center align-items-center bg-warning  p-5 ">
       <div class="col">
         <p>Av los rosales</p>
         <p>224 Lima</p>
@@ -84,7 +85,7 @@
         <p>elp.com</p>
       </div>
       <div class="col">
-        <a style="background-color: #6F2CF4;" class="btn text-white " th:href="@{/servicios}">Reservar una reunion</a>
+        <a class="btn btn-dark " th:href="@{/servicios}">Reservar una reunion</a>
       </div>
     </div>
   </div>

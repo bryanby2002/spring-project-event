@@ -5,16 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/style.css">
-    <title>Servicio</title>
+    <title>Nosotros</title>
 </head>
 
-<body class="bg-dark ">
+<body style="font-family: 'Roboto', sans-serif;" class="bg-body-tertiary" >
 
     <!--Nav-->
-    <nav style="background-color: #6F2CF4;" class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary  ">
         <div class="container-fluid">
-            <a class="navbar-brand text-white " th:href="@{/inicio}">Eventos </a>
+            <a style="color: #F39C12;" class="navbar-brand fs-5 fw-bold " th:href="@{/inicio}">Eventos </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -22,16 +23,16 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link text-white " aria-current="page" th:href="@{/inicio}">Inicio</a>
+                        <a style="color: #F39C12;"  class="nav-link fs-5  " aria-current="page" th:href="@{/inicio}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active text-white" th:href="@{/nosotros}">Nosotros</a>
+                        <a style="color: #F39C12;"  class="nav-link active fs-5  " th:href="@{/nosotros}">Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" th:href="@{/servicios}">Servicios</a>
+                        <a style="color: #F39C12;"  class="nav-link fs-5 " th:href="@{/servicios}">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a th:href="@{/loginForm}" class="text-white nav-item  nav-link">Iniciar sesión</a>
+                        <a style="color: #F39C12;"  th:href="@{/loginForm}" class="  fs-5 nav-item  nav-link">Iniciar sesión</a>
                     </li>
                 </ul>
             </div>
@@ -40,21 +41,21 @@
 
     <!--Titulo-->
     <div class="container mt-3">
-        <p class="fs-1 text-light ">Sobre nosotros</p>
+        <p class="fs-2">Sobre nosotros</p>
     </div>
 
 
     <!--contenido-->
-    <div class="container d-flex mt-5 justify-content-center gap-3 text-light ">
-        <div class="row">
+    <div class="container d-flex  flex-wrap gap-2 justify-content-around  ">
+        <div class="row col-md-6">
             <div class="col">
-                <p class="fs-2">Bienvenidos a <strong>LocalNice</strong></p>
+                <p class="fs-3">Bienvenidos a <strong>LocalNice</strong></p>
                 <p>En LocalNice, nos apasiona transformar momentos
                     especiales en experiencias inolvidables. Somos una empresa
                     dedicada a la creación y elaboración de eventos extraordinarios,
                     desde íntimas celebraciones de cumpleaños hasta grandiosas bodas y
                     eventos privados.</p>
-                <p class="fs-2">Nuestra misión</p>
+                <p class="fs-3">Nuestra misión</p>
                 <p>Nuestra misión es superar tus expectativas y hacer realidad la
                     visión única que tienes para tu evento. Nos esforzamos por
                     capturar la esencia de cada ocasión, creando momentos que
@@ -64,17 +65,19 @@
         <div class="row">
             <div class="col">
                 <img 
-                class="rounded-start-5 border " 
+                class=" rounded " 
                 th:src="@{/imgs/nosotros.jpg}" 
                 src="../static/imgs/nosotros.jpg"
                 width="500px">
             </div>
         </div>
     </div>
+    <br>
+    <br>
 
     <!--pie de pagina-->
-    <div style="background-color: #2B3035;" class="container-fluid mt-3">
-        <div class="row d-flex justify-content-center align-items-center p-5 text-white ">
+    <div class="container-fluid mt-3 bg-warning-subtle fw-bold ">
+        <div class="row d-flex justify-content-center align-items-center bg-warning  p-5 ">
           <div class="col">
             <p>Av los rosales</p>
             <p>224 Lima</p>
@@ -91,7 +94,7 @@
             <p>elp.com</p>
           </div>
           <div class="col">
-            <a style="background-color: #6F2CF4;" class="btn text-white " th:href="@{/servicios}">Reservar una reunion</a>
+            <a class="btn btn-dark " th:href="@{/servicios}">Reservar una reunion</a>
           </div>
         </div>
       </div>
